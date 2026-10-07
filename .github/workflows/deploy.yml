@@ -1,0 +1,40 @@
+name: Deploy to GiHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    # Allows the deployment to be treggered manually from GitHub when necessary
+  workflow_despatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repositoy
+        uses: actions/checkout@4
+        with: 
+          fetch-depth: 0
+
+      - name: Set up  Node.js
+        uses: actions/setup-node@v4
+        with: 
+          node-version: 26
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build the site
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with: 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          publish_branch: gh-pages
