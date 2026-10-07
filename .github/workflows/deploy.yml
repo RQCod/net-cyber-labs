@@ -5,7 +5,7 @@ on:
     branches:
       - main
     # Allows the deployment to be treggered manually from GitHub when necessary
-  workflow_despatch:
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repositoy
-        uses: actions/checkout@4
+        uses: actions/checkout@v4
         with: 
           fetch-depth: 0
 
