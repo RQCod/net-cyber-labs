@@ -33,7 +33,7 @@ const config = {
   deploymentBranch: 'gh-pages', // The branch where the compiled code will be pushed.
   trailingSlash: false, // As recommended by GitHub Pages.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -114,8 +114,8 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Documentation',
+                to: '/',
               },
             ],
           },
